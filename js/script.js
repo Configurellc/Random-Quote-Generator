@@ -6,18 +6,12 @@ FSJS project 1 - A Random Quote Generator
 
 // Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
 
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
 
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
-
-
+/*Creating var name myQuotesLength which will be use to asses the number of items within my function call which is returning the array quotes. 
+This will also be used in the parameters of getRandomQuote function. 
+*/
 var myQuotesLength = myQuotes().length;
+var quotes = myQuotes();
 
 /***
   Create the `getRandomQuote` function to:
@@ -25,14 +19,19 @@ var myQuotesLength = myQuotes().length;
    - use the random number to `return` a random quote object from the 
      `quotes` array.
 ***/
-
+/*
+Will use getRandom quote to generate the randomnumber. The parameter 'maxNum' will likely hold the value 'myQuotesLength' which holds the total number
+of items within the 'quotes' array. Doing this will allow the number to never be greater than the number of items in the array. 
+*/
 function getRandomQuote(maxNum) {
-  var randomNum = Math.floor(Math.random() * maxNum) + 1;
-
-  return randomNum;
+  var randomNum = Math.floor(Math.random() * maxNum);
+  var randomQuote = quotes[randomNum];
+ // console.log('random quote', randomQuote );
+  return randomQuote;
 }
+//console.log( myQuotesLength );
+console.log('hey', getRandomQuote(myQuotesLength) );
 
-console.log( getRandomQuote(myQuotesLength));
 
 
 
@@ -46,9 +45,19 @@ console.log( getRandomQuote(myQuotesLength));
      they are added to the HTML string.
    - set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
+function printQuote() {
+  var message = getRandomQuote(myQuotesLength);
+  console.log('message', message );
+    var quoteDiv = document.getElementById('quote-box');
+      /*partially figured this solution out. I had the getElementByClassName correct. I was forgetting the index value [0]. Kudos W3Schools for the code example
+      https://www.w3schools.com/jsref/met_element_getelementsbyclassname.asp*/
+      quoteDiv.getElementsByClassName('quote')[0].innerHTML = message.quote;
+      
+    //  quoteDiv.innerHTML = message.quote;
+  
 
 
-
+}
 
 /***
   When the "Show another quote" button is clicked, the event listener 
@@ -57,7 +66,7 @@ console.log( getRandomQuote(myQuotesLength));
   comment.
 ***/
 
-//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
