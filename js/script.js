@@ -30,19 +30,23 @@ function getRandomQuote(maxNum) {
 
 
 function printQuote() {
-  var message = getRandomQuote(myQuotesLength);
+//data call to grab quotes from array of objects
+var message = getRandomQuote(myQuotesLength);
   console.log('message', message );
-var  quote_Parent = document.querySelector('#quote-box');
-var quote_Child = quote_Parent.querySelectorAll('.quote');
-quote_Child[0].innerHTML = message.quote;
 
-var source_Parent = document.querySelector('.source');
-var sourceField = document.querySelectorAll('.source');
-sourceField[0].innerHTML = message.source;
-console.log('source', source_Parent);
-var citation_Child = source_Parent.querySelectorAll('.citation');
-citation_Child[0].innerHTML = message.citation;
- //var yearChildren = parentDiv.querySelectorAll('.year');
+var quoteField= document.querySelectorAll('.quote')[0].innerText = message.quote;
+//var quoteField = quote_Child[0].innerText = message.quote;
+var source_Parent = document.querySelectorAll('.source');
+console.log('parent', source_Parent);
+var sourceField = source_Parent[0].childNodes[0].innerHTML = message.source;
+console.log( 'source', sourceField );
+var citationField = source_Parent[0].childNodes[1].innerText = message.citation;
+var yearField =  source_Parent[0].childNodes[2].innerText = message.year;
+  if  (yearField === undefined) {
+    yearField = document.getElementsByClassName('year')[0].innerHTML = ' ';
+  }
+  
+
 
 
 /**********************************************************************************************************************************************************
@@ -61,11 +65,8 @@ https://www.w3schools.com/jsref/met_element_getelementsbyclassname.asp
 //quoteDiv.innerHTML = message.quote;
 *************************************************************************************************************
 The below If condition to remove undefined when year has not been set. 
-**************************************************************************************************************
-if  (yearDiv === undefined) {
-    yearDiv = document.getElementsByClassName('year')[0].innerHTML = ' ';
-  }
-  */
+**************************************************************************************************************/
+
 }
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
