@@ -8,7 +8,7 @@ FSJS project 1 - A Random Quote Generator
 
 
 /*******************************************************************************************************************************************
-***Quotes array exists within .\js\quotes.js***
+*Quotes array exists within .\js\quotes.js***
 Creating var name myQuotesLength which will be use to asses the number of items within my function call which is returning the array quotes. 
 This will also be used in the parameters of getRandomQuote function. 
 *********************************************************************************************************************************************/
@@ -34,8 +34,7 @@ function printQuote() {
 var message = getRandomQuote(myQuotesLength);
   console.log('message', message );
 
-var quoteField= document.querySelectorAll('.quote')[0].innerText = message.quote;
-//var quoteField = quote_Child[0].innerText = message.quote;
+var quoteField= document.querySelectorAll('.quote')[0].innerText = message.quote; 
 var source_Parent = document.querySelectorAll('.source');
 console.log('parent', source_Parent);
 var sourceField = source_Parent[0].childNodes[0].innerHTML = message.source;
